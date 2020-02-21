@@ -37,7 +37,7 @@
   - > mvvm
     <br/>
   ![mvvm](img/mvvn.png)
-  ![mvvm](img/mvvm.png)
+  ![mvvm](img/MVVM.png)
     
     
 ## 与其它前端JS框架的关联  
