@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--这个脚本会在window上注册一个全局变量: Vue(函数)-->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--view层-->
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script>
+    //vm : vm层
+    var vm = new Vue({
+        el:"#app",
+        // modle层
+        data:{
+            msg:"我的课上没有酒 你却吐的像条狗"
+        }
+    })
+</script>
+</html>
