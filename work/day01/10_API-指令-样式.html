@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span :style="style"  v-text="msg" ></span>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"给我爱情和包进行了,面 我自己买",
+            style:[
+                {color:"pink"},
+                {fontSize:"30px"}
+            ]
+        }
+    })
+</script>
+</html>

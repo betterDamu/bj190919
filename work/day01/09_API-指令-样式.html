@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .pink{
+            color: pink;
+        }
+        .big{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--class 我们称为标签的预定义属性-->
+        <!--xfz;v-text 我们称为标签的自定义属性-->
+
+        <!--  v-bind: 可以让一个非vue指令的标签属性(预定义 自定义)交给vue管理  -->
+        <!--  v-bind简写形式 :  -->
+
+        <!--class="red pink big"-->
+        <span :class="className"  v-text="msg" ></span>
+        <button @click="handleC">click</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"给我爱情和包进行了,面 我自己买",
+            // v-bind
+
+            /* 只有class有这几种数据结构的选择
+                字符串
+                对象
+                数组
+                    [字符串,字符串]
+                    [{},{}]
+            */
+            className:{
+                pink:true
+            }
+        },
+        methods:{
+            handleC(){
+                this.className.pink = !this.className.pink;
+            }
+        }
+    })
+</script>
+</html>

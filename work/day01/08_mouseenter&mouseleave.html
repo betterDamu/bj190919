@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        .app{
+            width: 50px;
+            height: 50px;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="inner">
+            <div class="app">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var wrap = document.querySelector(".wrap");
+    var inner = document.querySelector(".inner");
+    var app = document.querySelector(".app")
+
+
+
+    app.onmouseenter=function () {
+        console.log("app-onmouseenter")
+    }
+    app.onmouseleave=function () {
+        console.log("app-onmouseleave")
+    }
+    inner.onmouseenter=function () {
+        console.log("inner-onmouseenter")
+    }
+    inner.onmouseleave=function () {
+        console.log("inner-onmouseleave")
+    }
+    wrap.onmouseenter=function () {
+        console.log("wrap-onmouseenter")
+    }
+    wrap.onmouseleave=function () {
+        console.log("wrap-onmouseleave")
+    }
+
+
+
+    // app.onmouseover=function () {
+    //     console.log("app-mouseover")
+    // }
+    // app.onmouseout=function () {
+    //     console.log("app-mouseout")
+    // }
+    // inner.onmouseover=function () {
+    //     console.log("inner-mouseover")
+    // }
+    // inner.onmouseout=function () {
+    //     console.log("inner-mouseout")
+    // }
+    // wrap.onmouseover=function () {
+    //     console.log("wrap-mouseover")
+    // }
+    // wrap.onmouseout=function () {
+    //     console.log("wrap-mouseout")
+    // }
+</script>
+</html>
