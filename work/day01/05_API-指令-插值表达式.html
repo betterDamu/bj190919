@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       {{msg}} --- {{val + 1}} --- {{flag?"真":"假"}}
+        <br>
+        {{new Date()}}
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"周冬雨喜欢达姆",
+            val:1,
+            flag:true
+        }
+    })
+
+
+
+</script>
+</html>
