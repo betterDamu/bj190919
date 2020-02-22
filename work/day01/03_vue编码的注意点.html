@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script>
+    // 1. 所有需要在界面上展现的数据应该都要在data中定义一遍
+    // 2. 在使用vue开发的过程中; 我们所有的编码一般情况下是不会写在配置对象外部的
+   new Vue({
+        el:"#app",
+        data:{
+            msg:"你的课上没有酒 我却吐的像条狗"
+        },
+
+        //基本上在vue配置对象中的所有函数  他们的this都是指向vm实例对象
+        mounted(){
+            // this 指向vm实例对象
+            setTimeout(()=>{
+                this.msg = "戏子入画 一生天涯"
+            },2000)
+        }
+    })
+
+
+
+</script>
+</html>

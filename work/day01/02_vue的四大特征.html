@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--表单标签让我们有能力在view得到数据-->
+        <!--modle 到 view-->
+        <input type="text" v-model="val">
+        <br>
+        {{val}}
+    </div>
+</body>
+<script>
+
+    /*
+        1. 申明式编程
+            区别于dom编程
+        2. 响应式数据(数据单向流  model --> view)
+            vue data对象的所有属性都会转绑给对应的vue实例
+            data中的所有数据 都是响应式数据 数据的改变会触发界面的更新
+        3. 数据双向流(model --> view  view-->model)
+            v-model 实现了数据双向流
+        4. 数据驱动
+    */
+    //vm:vue的实例
+    var vm = new Vue({
+        el:"#app",
+        //项目中用到的所有需要在界面上展现的数据 一定要在data配置选项中注册一把
+        data:{
+            msg:"你的课上没有酒 我却吐的像条狗",
+            msg2:"",
+            val:"请输入数据"
+        }
+    })
+
+    // console.log(vm.msg)
+    // setTimeout(()=>{
+    //     vm.msg = "愿得一人心 永远不相亲"
+    // },2000)
+
+
+    setTimeout(()=>{
+        vm.msg2 = "戏子入画 一生天涯"
+    },2000)
+</script>
+</html>
