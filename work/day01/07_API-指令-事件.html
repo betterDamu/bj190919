@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 200px;
+            background: deeppink;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background: hotpink;
+        }
+        .test{
+            width: 50px;
+            height: 50px;
+            background: pink;
+        }
+        .red{
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+        .gray{
+            width: 50px;
+            height: 50px;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-on: 可以省略成@ -->
+
+        <!--
+            stop: 阻止冒泡
+            prevent: 取消事件的默认行为
+            self: 观察事件的触发元素是不是自己
+        -->
+        <div class="wrap" @click="handleWrap">
+            <div class="inner" @click="handleInner">
+                <div class="test" @click.self="handleTest">
+
+                </div>
+            </div>
+        </div>
+        <a href="http://www.atguigu.com/" @click.prevent="handleA" >回娘家</a>
+
+
+        <br>
+
+        <!--
+            .{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。
+            13|enter(tab delete esc space up down left  right)
+            .once - 只触发一次回调。
+            .left - (2.2.0) 只当点击鼠标左键时触发。
+            .right - (2.2.0) 只当点击鼠标右键时触发。
+            .middle - (2.2.0) 只当点击鼠标中键时触发。
+        -->
+
+        <input type="text" @keydown.enter="handleKeydown" />
+        <input type="text" @keydown.once="handleKeydown" />
+        <div class="red" @click.left="handleRed">
+
+        </div>
+        <br>
+        <div class="red" @click.right="handleRed">
+
+        </div>
+        <br>
+        <div class="red" @click.middle="handleRed">
+
+        </div>
+
+        <!--参数-->
+        <br>
+        <div class="gray" @click="handleGray(123,$event)">
+
+        </div>
+
+       <!--
+            dom问题?
+                mouseover mouseout
+                mouseenter mouseleave
+                    这两组之间有什么区别?
+                    mouseenter mouseleave 他们是没有冒泡的
+
+            事件流有几个阶段?
+                捕获 目标处理 冒泡
+
+
+            事件委托?
+                事件委托是基于冒泡的;
+                我们可以将一个父元素底下子元素的共性的行为放在父元素身上进行绑定
+        -->
+
+
+    </div>
+</body>
+<script>
+    // 1. 所有需要在界面上展现的数据应该都要在data中定义一遍
+    // 2. 在使用vue开发的过程中; 我们所有的编码一般情况下是不会写在配置对象外部的
+    // 3. 事件对应的回调函数应该注册在配置对象的methods属性中
+
+    //.self - 只当事件是从侦听器绑定的元素本身触发时才触发回调
+    new Vue({
+        el:"#app",
+        methods:{
+            handleGray(num,ev){
+                console.log(num,ev)
+            },
+            handleRed(){
+                console.log("handleRed")
+            },
+            handleKeydown(){
+                console.log("handleKeydown")
+            },
+            handleA(){
+                console.log("handleA")
+            },
+            handleTest(){
+                console.log("handleTest")
+            },
+            handleInner(){
+                console.log("handleInner")
+            },
+            handleWrap(){
+                console.log("handleWrap")
+            }
+        }
+    })
+</script>
+</html>
