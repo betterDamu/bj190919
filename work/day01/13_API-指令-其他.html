@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        [v-cloak] { display: none }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-pre>
+            <!--纯静态页-->
+            {{obj.name}}
+            <span>123</span>
+        </div>
+
+        <div v-cloak>
+            {{obj.name}} {{obj.name}} {{obj.name}} {{obj.name}} {{obj.name}} {{obj.name}}
+        </div>
+
+        <div v-once>
+            <span>{{obj.name}}</span>
+        </div>
+    </div>
+</body>
+<script>
+    var vm =new Vue({
+        el:"#app",
+        data:{
+            list:["吃饭","睡觉","玩晓飞","弄天禹","搞啊强","玩老刘"],
+            obj:{
+                name:"达姆",
+                age:18,
+                wife:"周冬雨",
+                son:"思聪"
+            }
+        }
+    })
+</script>
+</html>

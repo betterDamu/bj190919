@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span v-if="flag"       v-text="msg1" ></span>
+        <span v-else-if="flag"  v-text="msg2" ></span>
+        <span v-else            v-text="msg3" ></span>
+
+        <span v-show="!flag">xxx</span>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            flag:false,
+            msg1:"你喜欢玩水嘛?",
+            msg2:"喜欢",
+            msg3:"去把碗洗了"
+        }
+    })
+</script>
+</html>
