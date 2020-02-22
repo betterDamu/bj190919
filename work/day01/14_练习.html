@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .list{
+            width: 500px;
+        }
+        .list span{
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li class="list" v-for="(item,index) in list">
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <span>{{item.wife}}</span>
+                <button @click="del(index)">del</button>
+                <button @click="update(index)">update</button>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:[
+                {
+                    name:"达姆",
+                    age:18,
+                    wife:"周冬雨"
+                },
+                {
+                    name:"李强",
+                    age:48,
+                    wife:"天禹"
+                },
+                {
+                    name:"老刘",
+                    age:58,
+                    wife:"海峰"
+                },
+                {
+                    name:"晓飞",
+                    age:68,
+                    wife:"晓飞的右手"
+                }
+            ]
+        },
+        methods:{
+            del(index){
+                this.list.splice(index,1)
+            },
+            update(index){
+                //由于js的限制,vue中不能直接通过index去修改数组的数据
+                //如果通过index去修改数组的数据 数据是可以被修改的
+                //但是界面得不到更新 vue的数据会失去响应式的能力
+                //我们应该使用数组的变异方法 才能有效的更新界面
+                /*this.list[index]={
+                    name:"程程",
+                    age:18,
+                    wife:"晓飞"
+                }*/
+
+                //实现数组的CUD
+                this.list.splice(index,1,{
+                    name:"程程",
+                    age:18,
+                    wife:"晓飞"
+                })
+            }
+        }
+    })
+</script>
+</html>
