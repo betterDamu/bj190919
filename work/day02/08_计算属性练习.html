@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        span{
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            border: 1px solid;
+        }
+        .big{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入要查询的数据" v-model="searchVal">
+        <ul>
+            <li v-for="item in searchList">
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <span class="big">{{item.assess}}</span>
+            </li>
+        </ul>
+        <button @click="up">按年龄升序</button>
+        <button @click="down">按年龄降序</button>
+        <button @click="old">按年龄的原本顺序</button>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            searchVal:"",
+            sortType:0, //1:升序 -1:降序 0:原本顺序
+            list:[
+                {name:"老刘啊",age:58,assess:"稳的一比"},
+                {name:"海峰",age:39,assess:"200斤的小可爱"},
+                {name:"阿强",age:42,assess:"可爱的不要不要的"},
+                {name:"天禹",age:43,assess:"帅的不要不要的"},
+                {name:"晓飞啊",age:38,assess:"老男人"},
+                {name:"达姆",age:40,assess:"有趣的灵魂 帅气的外表 不要脸的达姆"},
+                {name:"程程",age:41,assess:"200斤的大可爱"}
+            ]
+        },
+        computed:{
+            searchList(){
+                /*
+                    1. 当前这个数组的api可以干嘛 filter可以用来做过滤
+                        怎么代表通过测试?
+                           callback 返回 true 表示该元素通过测试
+
+                    2. 当前这个数组的api有几个参数
+                        callback
+                            item index array
+
+                    3. 当前这个数组的api返回值是什么
+                        一个新的、由通过测试的元素组成的数组
+
+                    4. 当前这个api 会不会影响老数组
+                        filter不会影响老数组
+                */
+
+                //依赖于searchVal  过滤功能
+                var filterArr = this.list.filter((item,index,array)=>{
+                    return item.name.includes(this.searchVal)
+                })
+
+                //依赖于sortType 排序功能
+                switch (this.sortType){
+                    case 0:
+                        break;
+                    case 1:
+                        filterArr.sort((a,b)=>{
+                            return a.age - b.age
+                        })
+                        break;
+                    case -1:
+                        filterArr.sort((a,b)=>{
+                            return b.age -a.age
+                        })
+                        break;
+                }
+
+                return filterArr
+            }
+        },
+        methods:{
+            up(){this.sortType = 1},
+            down(){this.sortType = -1},
+            old(){this.sortType = 0}
+        }
+    })
+</script>
+</html>
