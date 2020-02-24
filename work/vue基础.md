@@ -3,8 +3,8 @@ vue基础课
         vue特点
         vue指令
         vue配置项
-        Vue构造函数
         vue实例对象
+        Vue构造函数
         组件化开发
         组件间的数据传递
         todolist

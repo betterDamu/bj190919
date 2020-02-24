@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <v-damu></v-damu>
+    </div>
+
+    <div id="app2">
+        <v-damu></v-damu>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"幸福右边 荒无人烟"
+        },
+        components:{
+            "v-damu":{
+                template:"<div>{{msg}}</div>",
+
+                //为什么非根组件中data需要定义成一个函数? 为了数据的隔离
+                data(){
+                    return {
+                        msg:"戏子入画 一生天涯"
+                    }
+                }
+            }
+        }
+    })
+
+    new Vue({
+        el:"#app2",
+        data:{
+            msg:"流年不利 步履不停"
+        },
+        components:{
+            "v-damu":{
+                template:"<div>{{msg}}</div>",
+
+                //为什么非根组件中data需要定义成一个函数? 为了数据的隔离
+                data(){
+                    return {
+                        msg:"戏子入画 一生天涯"
+                    }
+                }
+            }
+        }
+    })
+
+
+
+</script>
+</html>

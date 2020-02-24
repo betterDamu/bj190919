@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <v-damu></v-damu>
+    </div>
+
+    <div id="app2">
+        <v-damu></v-damu>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    //在子组件中不能使用el配置;因为el配置只能由根组件使用
+    /*
+        因为子组件中没有办法使用el
+            1. 不知道怎么挂载
+                靠匹配组件名(不是挂载 而是覆盖)
+            2. 模板怎么定义
+                通过template来定义
+    */
+
+    /*
+        只有在根组件中 data才允许是一个对象
+        在其他非根组件中data应该定义成一个函数
+            这个函数应该要返回一个对象
+     */
+
+    Vue.component("v-damu",{
+        template:"<div>{{msg}}</div>",
+
+        //为什么非根组件中data需要定义成一个函数? 为了数据的隔离
+        data(){
+            return {
+                msg:"戏子入画 一生天涯"
+            }
+        }
+    })
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"幸福右边 荒无人烟"
+        }
+    })
+
+    new Vue({
+        el:"#app2",
+        data:{
+            msg:"流年不利 步履不停"
+        }
+    })
+
+
+
+</script>
+</html>

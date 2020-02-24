@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script>
+
+
+    Vue.config.productionTip = false;
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"幸福右边 荒无人烟"
+        }
+    })
+
+    //定义vue的自定义事件
+    vm.$on("damu",()=>{console.log("damu1")})
+    vm.$on("damu",()=>{console.log("damu2")})
+    vm.$on("damu",()=>{console.log("damu3")})
+    vm.$on("damu",()=>{console.log("damu4")})
+    vm.$on("damu",()=>{console.log("damu5")})
+
+    function six(){console.log("damu6")}
+    vm.$on("damu",six)
+    setInterval(()=>{
+        vm.$emit("damu")
+    },1000)
+
+    setTimeout(()=>{
+        vm.$off("damu",six)
+    },3000)
+
+
+</script>
+</html>
