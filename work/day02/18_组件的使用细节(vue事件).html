@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            1. 一个组件是不是就是一个vue实例
+            2. vue实例 能不能 定义vue自定义事件
+                    vm.$on()
+            3. 如果在组件上使用@符号 相当于是给当前这个组件定义vue事件
+
+            v-btn.$on("click",handleC)
+            v-btn.$emit("click)
+        -->
+        <v-btn @click="handleC"></v-btn>
+    </div>
+</body>
+<script>
+    // vue局部组件
+    Vue.config.productionTip = false;
+    new Vue({
+        el:"#app",
+        methods:{
+            handleC(){
+                console.log("app handleC")
+            }
+        },
+        components:{
+            "v-btn":{
+                template:`<button @click="handleC">click</button>`,
+                methods:{
+                    handleC(){
+                        // this : v-btn组件
+                        this.$emit("click")
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

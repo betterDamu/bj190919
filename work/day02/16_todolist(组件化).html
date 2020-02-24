@@ -9,12 +9,11 @@
     <div id="app">
         <input type="text" placeholder="输入些待办任务" v-model="val">
         <button @click="handleClick">add</button>
-        <ul>
-            <li v-for="item in list">{{item}}</li>
-        </ul>
+        <v-list :list="list"></v-list>
     </div>
 </body>
 <script>
+    // vue局部组件
     new Vue({
         el:"#app",
         data:{
@@ -25,6 +24,12 @@
             handleClick(){
                 this.list.push(this.val);
                 this.val = ""
+            }
+        },
+        components:{
+            "v-list":{
+                template:` <ul><li v-for="item in list">{{item}}</li></ul>`,
+                props:["list"]
             }
         }
     })

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            在html5的规范中 table底下只能使用tr标签
+            ul li
+            ol li
+        -->
+        <table>
+            <tr is="v-row"></tr>
+        </table>
+    </div>
+</body>
+<script>
+    // vue局部组件
+    new Vue({
+        el:"#app",
+        components:{
+            "v-row":{
+                template:`<tr><td>1-1</td></tr>`
+            }
+        }
+    })
+</script>
+</html>
