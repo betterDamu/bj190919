@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .list{
+            width: 500px;
+        }
+        .list span{
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+     <!--key & v-if-->
+    <div id="app">
+        <span v-if="flag">a:</span><input v-if="flag" type="text" key="a">
+        <span v-if="!flag">b:</span><input v-if="!flag" type="text" key="b">
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        }
+    })
+</script>
+</html>

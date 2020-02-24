@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .list{
+            width: 500px;
+        }
+        .list span{
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li class="list" v-for="(val,key,index) in obj">
+                <span>{{key}}</span>
+                <span>{{val}}</span>
+                <button @click="update(index)">update</button>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            obj:{
+                name:"彭于晏",
+                age:18
+            }
+        },
+        methods:{
+            update(index){
+                // if(index === 0) this.obj.name = "达姆";
+                // if(index === 1) this.obj.age = 19;
+                // this.obj.wife = "程程"
+                // Vue.set(this.obj,"wife","程程")
+                this.$set(this.obj,"wife","200斤程程")
+            }
+        }
+    })
+</script>
+</html>

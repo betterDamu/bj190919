@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!--暂时这边在使用v-for的使用 key值指定为index-->
+            <li v-for="(item,index) in list" :key="index">
+                <span>{{item}}</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:["吃饭","吃饭","睡觉","玩晓飞","弄天禹","搞啊强","玩老刘"]
+        }
+    })
+</script>
+</html>
