@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="输入些待办任务" v-model="val">
+        <button @click="handleClick">add</button>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:["吃饭","睡觉","玩晓飞","弄天禹","搞啊强","玩老刘"],
+            val:""
+        },
+        methods:{
+            handleClick(){
+                this.list.push(this.val);
+                this.val = ""
+            }
+        }
+    })
+</script>
+</html>

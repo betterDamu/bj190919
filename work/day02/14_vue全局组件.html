@@ -8,6 +8,12 @@
 <body>
     <div id="app">
         <v-damu></v-damu>
+        <v-damu></v-damu>
+        <v-damu></v-damu>
+        <v-damu></v-damu>
+        <v-damu></v-damu>
+        <v-damu></v-damu>
+        <v-damu></v-damu>
     </div>
 
     <div id="app2">
@@ -33,7 +39,7 @@
      */
 
     Vue.component("v-damu",{
-        template:"<div>{{msg}}</div>",
+        template:`<div><span><i>{{msg}}</i></span></div>`,
 
         //为什么非根组件中data需要定义成一个函数? 为了数据的隔离
         data(){
