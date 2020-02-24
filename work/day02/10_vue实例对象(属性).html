@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .list{
+            width: 500px;
+        }
+        .list span{
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        app
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    //一个Vue实例就是一个组件对象
+    var vm = new Vue({
+        name:"根组件",
+        el:"#app",
+        data:{
+            obj:{
+                name:"彭于晏",
+                age:18
+            }
+        }
+    })
+
+    console.log(vm.$root === vm)
+    console.log(vm.$el)
+    console.log(vm.$options.name) // 之后会用到
+    console.log(vm.$data.obj.age)
+
+</script>
+</html>

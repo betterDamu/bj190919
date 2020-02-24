@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	
+		var arr =[1,2,3];
+		console.log(typeof arr);
+		
+	
+	
+	
+		//Array.isArray(obj) 用于确定传递的值是否是一个 Array
+		Array.isArray([1, 2, 3]);  // true
+		Array.isArray({foo: 123}); // false
+		Array.isArray("foobar");   // false
+		Array.isArray(undefined);  // false
+		
+		//obj：需要检测的值。
+		
+		//返回值：如果对象是 Array，则为true; 否则为false。
+		
+		//是否影响老数组：不影响
+		
+		//Polyfill:衬垫代码
+		if (!Array.isArray) {
+		  Array.isArray = function(arg) {
+		    return Object.prototype.toString.call(arg) === '[object Array]';
+		  };
+		}
+	</script>
+</html>

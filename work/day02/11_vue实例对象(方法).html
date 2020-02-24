@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .list{
+            width: 500px;
+        }
+        .list span{
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    var vm = new Vue({
+        template:"<span>{{msg}}</span>",
+        data:{
+            msg:"幸福右边 荒无人烟"
+        }
+    })
+
+    //确定了Vue根组件挂载到哪个节点底下
+    vm.$mount("#app")
+
+    /*
+        el:
+            1. 确定了Vue根组件挂载到哪个节点底下
+            2. 确定了根组件的模板
+     */
+
+
+
+</script>
+</html>

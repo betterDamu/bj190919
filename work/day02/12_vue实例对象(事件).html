@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script>
+
+    /*
+        是不是提供给el 一个dom节点 性能会高一点?
+            确实是!!!
+
+        什么时候去谈性能?
+            1. 业务优先 在业务逻辑已经完全实现的情况下 你才有资格谈性能 优化!!
+            2. 编码的舒适程度 编码的友好性上来讲 我们不缺这一点性能!!!
+
+        在性能的问题上  千万不要走火入魔
+
+
+        webpack学好!!  70%性能的问题 webpack已经解决了!!!
+     */
+
+
+    Vue.config.productionTip = false;
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"幸福右边 荒无人烟"
+        }
+    })
+
+
+    //定义vue的自定义事件
+    vm.$on("damu",()=>{console.log("damu")})
+    setInterval(()=>{
+        //触发vue的自定义事件
+        vm.$emit("damu")
+    },1000)
+
+    setTimeout(()=>{
+        //移除事件监听
+        vm.$off("damu")
+    },3000)
+
+</script>
+</html>

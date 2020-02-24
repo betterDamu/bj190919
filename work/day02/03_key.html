@@ -9,6 +9,13 @@
     <div id="app">
         <ul>
             <!--暂时这边在使用v-for的使用 key值指定为index-->
+
+           <!--
+                key 是不是指令?
+                    不是指令 (v-for)
+                key 是不是html标签的属性?
+                    是的
+           -->
             <li v-for="(item,index) in list" :key="index">
                 <span>{{item}}</span>
             </li>

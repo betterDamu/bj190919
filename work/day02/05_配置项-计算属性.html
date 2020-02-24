@@ -44,10 +44,11 @@
                 return `${this.firstName}-${this.lastName}`
             }*/
             fullName:{
+                //在使用计算属性的时候; 值来自于计算属性get方法的返回值
                 get(){
-                    console.log("computed get")
                     return `${this.firstName}-${this.lastName}`
                 },
+                //在对计算属性进行设置的时候; 只要修改了计算属性的值;set方法就会被调用
                 set(val){
                     // val : 改完之后的值
                     let arr = val.split("-");
