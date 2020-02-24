@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>firstName:</span> <input type="text" v-model="firstName"> <br>
+        <span>lastName:</span> <input type="text" v-model="lastName"> <br>
+        <span>fullName:</span> <input type="text" v-model="fullName()"> <br>
+        {{fullName()}}
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"T",
+            lastName:"MAC",
+            test:"test"
+        },
+        methods:{
+            // 初始化的时候 如果模板上调用了该函数 该函数会被调两次
+            // 任何一个在模板上使用的data数据产生变化 函数都会被执行两次
+
+
+            /*
+                计算属性 和 方法的区别
+                    1. 方法的调用一直都是两次连续调用的 ;
+                        方法在任何一个在模板上使用的data数据产生变化 都会被执行两次
+                        方法没有缓存
+                    2. 计算属性的调用一直都是一次调用 ;
+                        计算属性只在自己关联的属性产生变化时才会被调用
+                        计算属性拥有缓存
+             */
+
+
+            fullName(){
+                console.log("methods")
+                return this.firstName + "-" + this.lastName
+            }
+        }
+    })
+</script>
+</html>

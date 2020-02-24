@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>firstName:</span> <input type="text" v-model="firstName"> <br>
+        <span>lastName:</span> <input type="text" v-model="lastName"> <br>
+        <span>fullName:</span> <input type="text" v-model="fullName"> <br>
+        {{test}}
+    </div>
+</body>
+<script>
+    /*
+        在vue中;如果你分析需求发现:
+            一个数据 要 依赖于 data中的其他数据时
+            那一定要想到计算属性;把当前数据变成一个计算属性
+
+       计算属性的特点:
+            当计算属性依赖的属性产生变化时;计算属性会重新执行 并渲染界面
+
+            计算属性的get方法会在vue初始化渲染的时候 执行一次
+            计算属性的get方法会在其依赖的属性产生变化时 重新执行
+
+            计算属性的set方法会在计算属性本身产生改变的时 被执行
+                    且set方法的第一个参数是改完的那个值
+
+            计算属性是会使用缓存的
+     */
+
+    var vm =new Vue({
+        el:"#app",
+        data:{
+            firstName:"T",
+            lastName:"MAC",
+            test:"test"
+        },
+        computed:{
+            //计算属性语法糖式的写法
+            /*fullName(){
+                return `${this.firstName}-${this.lastName}`
+            }*/
+            fullName:{
+                get(){
+                    console.log("computed get")
+                    return `${this.firstName}-${this.lastName}`
+                },
+                set(val){
+                    // val : 改完之后的值
+                    let arr = val.split("-");
+                    this.firstName = arr[0];
+                    this.lastName = arr[1];
+                }
+            }
+
+        }
+    })
+</script>
+</html>
