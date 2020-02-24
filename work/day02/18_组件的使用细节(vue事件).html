@@ -15,6 +15,9 @@
 
             v-btn.$on("click",handleC)
             v-btn.$emit("click)
+
+
+            这边的click不是dom事件 而是vue的自定义事件!!!
         -->
         <v-btn @click="handleC"></v-btn>
     </div>
@@ -31,6 +34,7 @@
         },
         components:{
             "v-btn":{
+                //这个click是真正的dom事件
                 template:`<button @click="handleC">click</button>`,
                 methods:{
                     handleC(){
