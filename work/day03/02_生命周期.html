@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       {{msg}}
+    </div>
+</body>
+<script>
+    //只要有template 是一个覆盖过程
+    //没有template 是一个挂载过程
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        //template:"<strong>strong</strong>",
+        // render(createVNode){
+        //     return createVNode("strong",this.msg)
+        // },
+        data:{
+            msg:"test msg"
+        },
+        beforeCreate(){console.log("beforeCreate")},
+        // ajax请求最早可以发送的地方
+        created(){console.log("created")},
+
+        beforeMount(){console.log("beforeMount")},
+        // 如果需要界面做一些操作 最后在这个钩子中
+        // ajax请求发送最安全的地方
+        mounted(){console.log("mounted")},
+
+
+        beforeUpdate(){console.log("beforeUpdate")},
+        updated(){console.log("updated")},
+
+        beforeDestroy(){console.log("beforeDestroy")},
+        destroyed(){console.log("destroyed")}
+    })
+    // vm.$mount("#app");
+</script>
+</html>

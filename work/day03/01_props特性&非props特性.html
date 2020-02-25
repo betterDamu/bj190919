@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .pink{
+            color: pink;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--class : 非props特性的属性   组件会继承非props特性的属性-->
+        <!--name  : props特性的属性     组件不会继承props特性的属性-->
+        <v-damu class="pink" name="达姆"></v-damu>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        components:{
+            "v-damu":{
+                props:["name"],
+                template:"<span>{{name}}</span>"
+            }
+        }
+    })
+</script>
+</html>
