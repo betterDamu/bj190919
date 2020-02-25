@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .pink{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-arc :num="num" @add="add" class="pink"></v-arc>
+        <v-arc :num="num" @add="add" class="pink"></v-arc>
+        <i class="pink" style="background: gray">{{appNum}}</i>
+    </div>
+</body>
+<script>
+
+
+
+    const arc = {
+        props:{
+            num:Number
+        },
+        data(){
+            return {
+                arcNum:this.num,
+                step:1,
+            }
+        },
+        template:"<i @click='handleC'>{{arcNum}}</i>",
+        methods:{
+            handleC(){
+                this.arcNum+=this.step;
+                this.$emit("add",this.step)
+            }
+        }
+    }
+
+
+    //一般情况下,父组件的数据只能在父组件的方法中进行修改
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+          num:0,
+          appNum:0
+        },
+        methods:{
+          add(step){
+              this.appNum += step
+          }
+        },
+        components:{
+            "v-arc":arc
+        }
+    })
+</script>
+</html>

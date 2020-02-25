@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .pink{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-arc :num="num" :add="add" class="pink"></v-arc>
+        <v-arc :num="num" :add="add" class="pink"></v-arc>
+        <i class="pink" style="background: gray">{{appNum}}</i>
+    </div>
+</body>
+<script>
+
+    /*1. 子向父传递数据的方案
+        父组件通过一个标签属性向子组件传递一个方法
+        子组件通过props来接受并检验这个方法
+        子组件在自身的内部调用父组件传过来的方法;
+            并且通过该方法的形参向父组件传递数据*/
+
+    // 当前这个方案  子向父传递数据 是父亲主动的
+
+    const arc = {
+        props:{
+            num:Number,
+            add:Function
+        },
+        data(){
+            return {
+                arcNum:this.num,
+                step:2,
+            }
+        },
+        template:"<i @click='handleC'>{{arcNum}}</i>",
+        methods:{
+            handleC(){
+                this.arcNum+=this.step;
+                this.add(this.step);
+            }
+        }
+    }
+
+
+    //一般情况下,父组件的数据只能在父组件的方法中进行修改
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+          num:0,
+          appNum:0
+        },
+        methods:{
+          add(step){
+              this.appNum += step
+          }
+        },
+        components:{
+            "v-arc":arc
+        }
+    })
+</script>
+</html>
