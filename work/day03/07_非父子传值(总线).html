@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-a></v-a>
+        <v-b></v-b>
+    </div>
+</body>
+<script>
+
+    /*非父子传值:
+        总线机制*/
+
+    const a = {
+        data(){
+            return {
+                msg:"a-message"
+            }
+        },
+        template:"<i @click='handleC'>{{msg}}</i>",
+        methods:{
+            handleC(){
+                //this a组件(vue实例)
+                this.bus.$emit("changeText",this.msg)
+            }
+        }
+    }
+
+    const b = {
+        data(){
+            return {
+                msg:"b-message"
+            }
+        },
+        template:"<i>{{msg}}</i>",
+        mounted(){
+            //this : b组件(vue实例)
+            this.bus.$on("changeText",(msg)=>{
+                //this : b组件(vue实例)
+                this.msg = msg;
+            })
+        }
+    }
+
+
+    Vue.config.productionTip = false;
+    //总线!!!!
+    Vue.prototype.bus = new Vue();//new Vue():组件
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-a":a,
+            "v-b":b
+        }
+    })
+</script>
+</html>
