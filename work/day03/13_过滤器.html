@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+</head>
+<body>
+<!--收集表单的数据-->
+    <div id="app">
+        {{date | filterDate}}
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    Vue.filter('filterDate', function (value) {
+        //做很复杂的格式化处理
+        return moment(value).format('YYYY-MM-DD HH:mm:ss');
+    })
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            date:new Date()
+        }
+    })
+</script>
+</html>
