@@ -6,6 +6,7 @@
     <script src="./js/vue.js"></script>
 </head>
 <body>
+    <!--组件间的关系看的是组件的使用位置-->
     <div id="app">
         <v-damu></v-damu>
         <v-damu></v-damu>
@@ -38,6 +39,9 @@
             这个函数应该要返回一个对象
      */
 
+
+    //定义的位置 为什么要在上面
+    //跟Vue的生命周期有关 只有在new Vue的时候 Vue身上的所有相关机制都应该要注册
     Vue.component("v-damu",{
         template:`<div><span><i>{{msg}}</i></span></div>`,
 
@@ -48,6 +52,7 @@
             }
         }
     })
+
 
 
     new Vue({
@@ -63,6 +68,7 @@
             msg:"流年不利 步履不停"
         }
     })
+
 
 
 
