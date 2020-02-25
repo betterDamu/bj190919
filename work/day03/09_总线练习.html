@@ -38,17 +38,22 @@
 
     const damu = {
         props:["title"],
-        template:"<i @click='handleC'>{{title}}</i>",
+        data(){
+          return {
+              damuTitle:this.title
+          }
+        },
+        template:"<i @click='handleC'>{{damuTitle}}</i>",
         mounted(){
           //当3个 v-damu被渲染完时  当前这一段代码 其实已经执行了三次
           //每一次执行此段代码 都是在bus的change事件绑定回调
           this.bus.$on("change",(title)=>{
-              this.title = title;
+              this.damuTitle = title;
           })
         },
         methods:{
             handleC(){
-                this.bus.$emit("change",this.title)
+                this.bus.$emit("change",this.damuTitle)
             }
         }
     }

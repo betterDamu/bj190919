@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        /*v-leave 是没有任何作用的!!!!!*/
+        .damu-leave{opacity: 1}
+        .damu-leave-active{transition: 1s all}
+        .damu-leave-to{opacity: 0; color: deeppink;}
+
+        .damu-enter{opacity: 0;color: deeppink;}
+        .damu-enter-active{transition: 1s all}
+        .damu-enter-to{opacity: 1; color: red;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="handleC">click</button>
+        <transition name="damu">
+            <div v-show="flag">
+                戏子入画 一生天涯
+            </div>
+        </transition>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    Vue.prototype.bus = new Vue();
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        },
+        methods:{
+            handleC(){
+                this.flag = !this.flag;
+            }
+        }
+    })
+</script>
+</html>

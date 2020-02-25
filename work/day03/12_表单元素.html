@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+<!--收集表单的数据-->
+    <div id="app">
+        <input v-model.lazy="message" placeholder="edit me">
+        <br>
+        <textarea v-model="textareaMessage" placeholder="add multiple lines"></textarea>
+        <br>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+        <br>
+        <div id='example-3'>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+        <br>
+        <div id="example-4">
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+        <br>
+        <div id="example-5">
+            <select v-model="selected">
+                <option disabled value="1">请选择</option>
+                <option value="2">A</option>
+                <option value="3">B</option>
+                <option value="4">C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <br>
+        <div id="example-6">
+            <select v-model="selected2" multiple style="width: 50px;">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+            </select>
+            <br>
+            <span>Selected: {{ selected2 }}</span>
+        </div>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            message:"123",
+            textareaMessage:"textareaMessage",
+            checked:true,
+            checkedNames:["Mike"],
+            picked:"One",
+            selected:"2",
+            selected2:["1","2"]
+        }
+    })
+</script>
+</html>

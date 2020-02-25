@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div ref="divEl">123</div>
+        <v-test ref="vTest"></v-test>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    Vue.prototype.bus = new Vue();
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-test":{
+                template:"<span>456</span>"
+            }
+        },
+        mounted(){
+            console.log(this.$refs)
+        }
+    })
+</script>
+</html>
