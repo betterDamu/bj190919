@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .pink{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-arc :num="num"  class="pink"></v-arc>
+        <v-arc :num="num"  class="pink"></v-arc>
+    </div>
+</body>
+<script>
+    /*
+        props校验
+    */
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+          num:11
+        },
+        components:{
+            "v-arc":{
+                props:{
+                    num:{
+                        type:Number,
+                        // 一般required和default不会一起使用
+                        required:true,
+                        validator: function (value) {
+                            // 在这可以写很多复杂的验证逻辑
+                            return value > 10;
+                        }
+                    }
+                },
+                data(){
+                    return {
+                        arcNum:this.num
+                    }
+                },
+                template:"<i @click='handleC'>{{arcNum}}</i>",
+                methods:{
+                    handleC(){
+                        this.arcNum++
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

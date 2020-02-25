@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .pink{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-arc :num="num" class="pink"></v-arc>
+        <v-arc :num="num" class="pink"></v-arc>
+    </div>
+</body>
+<script>
+    /*数据是从父组件 流向 子组件
+        1. 在父组件模板中通过 一个标签的自定义属性向子组件传值
+        2. 子组件在自己的配置中 通过props来接收和检验父组件传过来的数据*/
+
+    /*
+        子組件不应该直接修改来自于父组件的数据
+            如果真的没有办法,在子组件一定要修改来自于父组件的数据
+            那子组件必须得转存一份
+    */
+
+    /*
+        子组件接收来至于父组件的数据;接收到父组件的数据后;子组件选择在组件内部重新转存了一份
+        在子组件修改的是转存的那一份数据;这样子组件就不会污染到父组件的数据
+    */
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+          num:0
+        },
+        components:{
+            "v-arc":{
+                props:["num"],
+                data(){
+                    return {
+                        arcNum:this.num
+                    }
+                },
+                template:"<i @click='handleC'>{{arcNum}}</i>",
+                methods:{
+                    handleC(){
+                        this.arcNum++
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>
