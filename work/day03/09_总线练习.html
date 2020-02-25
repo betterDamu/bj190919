@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-damu title="damu"></v-damu>
+        <v-damu title="xfz"></v-damu>
+        <v-damu title="cc"></v-damu>
+    </div>
+</body>
+<script>
+
+    /*
+        Object.create: 本质是用来创建一个新对象的!!!  对象级别的继承
+
+
+        一个vue组件就是一个vue实例?
+            var "v-a" = new VueComponent()
+
+            VueComponent.prototype = Object.create(Vue.prototype)
+            VueComponent.prototype = 对象
+            对象.__proto__ = Vue.prototype
+
+
+            v-a.bus  有没有可能 会在Vue.prototype上找到?
+                v-a 没有bus属性
+                VueComponent.prototype 没有bus属性
+                Vue.prototype 上找bus属性
+
+    */
+
+    const damu = {
+        props:["title"],
+        template:"<i @click='handleC'>{{title}}</i>",
+        mounted(){
+          //当3个 v-damu被渲染完时  当前这一段代码 其实已经执行了三次
+          //每一次执行此段代码 都是在bus的change事件绑定回调
+          this.bus.$on("change",(title)=>{
+              this.title = title;
+          })
+        },
+        methods:{
+            handleC(){
+                this.bus.$emit("change",this.title)
+            }
+        }
+    }
+
+
+    Vue.config.productionTip = false;
+    Vue.prototype.bus = new Vue();
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>
