@@ -1,14 +1,10 @@
 <template>
-  <li :class="{highLight:highLight}"
-      @mouseenter="highLight=true"
-      @mouseleave="highLight=false"
-  >
+  <li :class="{line:checked}">
     <label>
       <input type="checkbox" v-model="checked"/>
       <span>{{item.content}}</span>
     </label>
     <button class="btn btn-danger"
-            v-show="highLight"
             @click="delTodo">删除</button>
   </li>
 </template>
@@ -21,7 +17,10 @@
         },
         data(){
           return {
-            highLight:false
+            // this.item.checked产生改变时; line对象对应的地址值是没有变的
+            // line:{
+            //   line:this.item.checked
+            // }
           }
         },
         computed:{
@@ -46,8 +45,25 @@
 <!--scoped 可以保證组件内部的样式只作用域组件内的元素-->
 <style scoped>
 
-  .highLight{
+  .line{
+    position: relative;
+  }
+  .line:after{
+    display: block;
+    content: "";
+    height: 1px;
+    width: 90%;
+    background: red;
+    position: absolute;
+    top:50%;
+  }
+
+
+  li:hover{
     background: pink;
+  }
+  li:hover button{
+    display: block;
   }
 
   li {
@@ -73,6 +89,9 @@
   li button {
     float: right;
     margin-top: 3px;
+    display: none;
+    position: relative;
+    z-index: 99;
   }
 
   li:before {

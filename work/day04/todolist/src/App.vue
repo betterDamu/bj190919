@@ -5,7 +5,7 @@
       <div class="todo-wrap">
         <todo-header @addTodo="addTodo"></todo-header>
         <todo-list :listArr="listArr"></todo-list>
-        <todo-footer></todo-footer>
+        <todo-footer :listArr="listArr" @clear="clear"></todo-footer>
       </div>
     </div>
   </div>
@@ -30,6 +30,12 @@
     methods:{
       addTodo(item){
         this.listArr.unshift(item)
+      },
+      clear(){
+        //将checked为true的数据全部过滤掉了
+        this.listArr = this.listArr.filter((item)=>{
+          return !item.checked
+        })
       }
     },
     components:{
