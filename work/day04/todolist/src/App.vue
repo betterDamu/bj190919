@@ -3,7 +3,7 @@
   <div id="app">
     <div class="todo-container">
       <div class="todo-wrap">
-        <todo-header></todo-header>
+        <todo-header @addTodo="addTodo"></todo-header>
         <todo-list :listArr="listArr"></todo-list>
         <todo-footer></todo-footer>
       </div>
@@ -22,9 +22,14 @@
       return {
         listArr:[
           {id:0,content:"98k",checked:false},
-          {id:1,content:"三级头",checked:false},
+          {id:1,content:"三级头",checked:true},
           {id:2,content:"三级甲",checked:false}
         ]
+      }
+    },
+    methods:{
+      addTodo(item){
+        this.listArr.unshift(item)
       }
     },
     components:{

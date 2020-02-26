@@ -5,6 +5,10 @@ import App from './App'
 
 Vue.config.productionTip = false
 
+
+//定义总线
+Vue.prototype.bus = new Vue();
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
