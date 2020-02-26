@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.runtime.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script>
+    /*
+        运行时版本 : 不支持使用template的 (只能用render)
+            没有编译器的
+        完整版本   : 支持使用template的
+            运行时 + 编译器(将template---> render)
+     */
+    var vm =new Vue({
+        render(createVNode){
+            return createVNode("strong",this.msg)
+        },
+        data:{
+            msg:"test msg"
+        }
+    })
+
+    vm.$mount("#app")
+</script>
+</html>
