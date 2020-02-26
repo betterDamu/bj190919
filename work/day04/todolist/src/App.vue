@@ -22,7 +22,7 @@
       return {
         listArr:[
           {id:0,content:"98k",checked:false},
-          {id:1,content:"三级头",checked:true},
+          {id:1,content:"三级头",checked:false},
           {id:2,content:"三级甲",checked:false}
         ]
       }
@@ -36,6 +36,23 @@
       "todo-header":todoHeader,
       "todo-list":todoList,
       "todo-footer":todoFooter
+    },
+    mounted(){
+      this.bus.$on("delTodo",(id)=>{
+          this.listArr = this.listArr.filter((item)=>{
+              return item.id !== id
+          })
+      })
+
+      this.bus.$on("change",(id,checked)=>{
+        /*id: 代表todoitem中操作的是哪一个li
+        checked: 当前li的状态*/
+        this.listArr.forEach((item)=>{
+            if(item.id === id){
+              item.checked = checked;
+            }
+        })
+      })
     }
   }
 </script>
