@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./js/myPlugin.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <v-damu></v-damu>
+        <input type="text" v-focus>
+        {{new Date() | filterDate}}
+    </div>
+</body>
+<script>
+
+    //将MyPlugin中的install方法取出来进行调用 并将Vue构造函数传到当前方法的第一个参数上
+    Vue.use(myPlugin)
+
+    new Vue({
+        el:"#app"
+    })
+</script>
+</html>

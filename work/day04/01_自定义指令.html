@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        directives: {
+            focus: {
+                // 这是一个回调函数 会在指令所在的节点 被渲染后重新插入到dom树时执行
+                inserted: function (el) {
+                    // el 指令所在的节点
+                    el.focus()
+                }
+            }
+        }
+    })
+</script>
+</html>

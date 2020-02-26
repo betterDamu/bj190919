@@ -46,6 +46,9 @@
             //     //this : b组件(vue实例)
             //     this.msg = msg;
             // })
+
+            //name 这个参数的值 在PubSub内部已经传值 传的就是事件的名字
+            //函数柯里化:给回调函数预先绑定参数
             PubSub.subscribe("changeText",(name, msg)=>{
                 this.msg = msg;
             })
