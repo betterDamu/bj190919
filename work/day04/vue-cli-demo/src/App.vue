@@ -1,18 +1,33 @@
+<!--
+  从一个.vue文件 编译成一个vue原生支持的模板 靠vue-loader来做的
+  var a = {
+    name:"App",
+    template:"<div id="app">
+              {{msg}}
+            </div>",
+    data(){
+      return {
+        msg:"hello vuc-cli"
+      }
+    }
+  }
+-->
+
+
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    {{msg}}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+    data(){
+      return {
+        msg:"hello vuc-cli"
+      }
+    }
 }
 </script>
 
