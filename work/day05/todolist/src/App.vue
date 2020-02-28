@@ -6,10 +6,13 @@
         <todo-header @addTodo="addTodo"></todo-header>
 
         <todo-list :listArr="listArr">
-          <template slot="inputSlot" slot-scope="{index}">
-            (>^ω^<)喵<input type="checkbox" v-model="listArr[index].checked">
+          <!--<template slot="inputSlot" slot-scope="{index}">-->
+          <template #inputSlot="{index}">
+            (>^ω^<)喵--<input type="checkbox" v-model="listArr[index].checked">
           </template>
-          <template slot-scope="{content}" slot="spanSlot">
+
+          <!--<template slot-scope="{content}" slot="spanSlot">-->
+          <template #spanSlot="{content}">
             <span style="color: red">{{content}}</span>
           </template>
         </todo-list>

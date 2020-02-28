@@ -16,8 +16,13 @@
     -->
     <div id="app">
         <v-damu>
-            <template slot-scope="{msg,msg2}">
-                <span>{{msg2}}</span>
+            <!--slot-scope="{msg,msg2}"-->
+            <!--新版插槽的写法:
+                本质上将 slot slot-scope 合成了一个指令 v-slot
+                v-slot:插槽的名字="{收集的数据1,收集的数据2}"-->
+
+            <template #default="{msg,msg2}">
+                <span>{{msg}}</span>
             </template>
         </v-damu>
     </div>

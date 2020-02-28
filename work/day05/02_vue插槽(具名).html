@@ -9,8 +9,21 @@
     <!--任何出现在父组件模板中的东西 都是靠父组件来进行渲染的-->
     <div id="app">
         <v-damu>
-            <span slot="damu">xxx</span>
-            <span slot="xfz">yyy</span>
+            <!--slot="damu"-->
+
+            <!--@ v-on:-->
+            <!--: v-bind:-->
+            <!--# v-slot:-->
+
+            <template  #damu>
+                <span>xxx</span>
+            </template>
+            <template  #xfz>
+                <span>yyy</span>
+            </template>
+            <template>
+                <span>zzz</span>
+            </template>
         </v-damu>
     </div>
 </body>
