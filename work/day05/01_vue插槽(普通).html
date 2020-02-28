@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--任何出现在父组件模板中的东西 都是靠父组件来进行渲染的-->
+    <div id="app">
+        <v-damu>
+            <!--template 是一个html5的标签-->
+            <template>
+                <span>xfz</span>
+            </template>
+        </v-damu>
+    </div>
+</body>
+<script>
+    /*
+        之前讲的数据传递 传递的都是值(基本数据类型  引用数据类型)
+        插槽也算一种数据传递:
+            插槽传的是html标签
+     */
+
+    const damu = {
+        template:`
+            <div>
+                <slot><span>damu</span></slot>
+            </div>
+        `
+    }
+
+    new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--任何出现在父组件模板中的东西 都是靠父组件来进行渲染的-->
+    <!--
+        使用slot-scope的时候;这个属性不能写在组件标签上;
+        应该要使用一个template标签;将父向子传递的html片段包裹起来
+        然后将slot-scope属性 写在这个template上
+
+        建议以后不管什么情况;我们都可以使用template将父向子传递的html片段包裹起来
+    -->
+    <div id="app">
+        <v-damu>
+            <template slot-scope="{msg,msg2}">
+                <span>{{msg2}}</span>
+            </template>
+        </v-damu>
+    </div>
+</body>
+<script>
+    /*
+        之前讲的数据传递 传递的都是值(基本数据类型  引用数据类型)
+        插槽也算一种数据传递:
+            插槽传的是html标签
+
+        普通插槽
+        具名插槽:
+            父组件向子组件通过数据(html片段)
+        作用域插槽:
+            可以使我们的子组件 向 父组件提供数据
+     */
+
+    const damu = {
+        template:`
+            <div>
+                <slot msg="这是子组件的数据" msg2="msg2" ></slot>
+            </div>
+        `
+    }
+
+    new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>
