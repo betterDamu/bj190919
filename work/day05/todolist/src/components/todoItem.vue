@@ -1,8 +1,12 @@
 <template>
   <li :class="{line:checked}">
     <label>
-      <slot name="inputSlot" ><input type="checkbox" v-model="checked"/></slot>
-      <slot name="spanSlot" :content="item.content"><span>{{item.content}}</span></slot>
+      <slot name="inputSlot" :index="index">
+        <input type="checkbox" v-model="checked"/>
+      </slot>
+      <slot name="spanSlot" :content="item.content">
+        <span>{{item.content}}</span>
+      </slot>
     </label>
     <button class="btn btn-danger" @click="delTodo">删除</button>
   </li>
@@ -12,7 +16,8 @@
     export default {
         name: "todoItem",
         props:{
-          item:Object
+          item:Object,
+          index:Number
         },
         data(){
           return {
