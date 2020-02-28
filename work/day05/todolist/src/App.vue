@@ -4,7 +4,16 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <todo-header @addTodo="addTodo"></todo-header>
-        <todo-list :listArr="listArr"></todo-list>
+        <todo-list :listArr="listArr">
+          <template slot-scope="{content}">
+            <span style="color: red">{{content}}</span>
+          </template>
+        </todo-list>
+        <todo-list :listArr="listArr">
+          <template slot-scope="{content}">
+            <span style="color: deeppink">{{content}}</span>
+          </template>
+        </todo-list>
         <todo-footer :listArr="listArr" @checkAll="checkAll" @clear="clear"></todo-footer>
       </div>
     </div>

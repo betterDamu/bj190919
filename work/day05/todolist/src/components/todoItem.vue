@@ -2,7 +2,7 @@
   <li :class="{line:checked}">
     <label>
       <input type="checkbox" v-model="checked"/>
-      <span>{{item.content}}</span>
+      <slot :content="item.content"><span>{{item.content}}</span></slot>
     </label>
     <button class="btn btn-danger"
             @click="delTodo">删除</button>
