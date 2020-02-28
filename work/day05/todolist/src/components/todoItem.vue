@@ -1,11 +1,10 @@
 <template>
   <li :class="{line:checked}">
     <label>
-      <input type="checkbox" v-model="checked"/>
-      <slot :content="item.content"><span>{{item.content}}</span></slot>
+      <slot name="inputSlot" ><input type="checkbox" v-model="checked"/></slot>
+      <slot name="spanSlot" :content="item.content"><span>{{item.content}}</span></slot>
     </label>
-    <button class="btn btn-danger"
-            @click="delTodo">删除</button>
+    <button class="btn btn-danger" @click="delTodo">删除</button>
   </li>
 </template>
 
