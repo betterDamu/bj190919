@@ -54,11 +54,11 @@
         /*id: 代表todoitem中操作的是哪一个li
         checked: 当前li的状态*/
         this.listArr.forEach((item)=>{
-            if(item.id === id){
-              item.checked = checked;
-            }
-        })
+        if(item.id === id){
+          item.checked = checked;
+        }
       })
+    })
     }
   }
 </script>
