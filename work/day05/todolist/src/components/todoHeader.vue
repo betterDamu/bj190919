@@ -6,7 +6,8 @@
 </template>
 
 <script>
-    let id = 2;
+    //@ : src这个目录
+    import util from "@/util";
     export default {
         name: "todoHeader",
         data(){
@@ -19,7 +20,9 @@
             //将这个数据交给app组件中的arrList
             //header 传递数据 给app组
             //子向父的数据传递
+            let id = util.get("todoid",0);
             id++;
+            util.set("todoid",id);
             var item = {
               id,
               content:this.msg,

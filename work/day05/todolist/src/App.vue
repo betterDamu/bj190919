@@ -16,6 +16,7 @@
   import todoHeader from "./components/todoHeader";
   import todoList from "./components/todoList";
   import todoFooter from "./components/todoFooter";
+  import util from "./util";
   export default {
     name: 'App',
     data(){
@@ -53,8 +54,7 @@
           JSON.parse(str)
       */
       //从localStorage中获取数据
-      let listArr = localStorage.getItem("todolist");
-      this.listArr = listArr ? JSON.parse(listArr): [],
+      this.listArr = util.get("todolist",[])
       this.bus.$on("delTodo",(id)=>{
           this.listArr = this.listArr.filter((item)=>{
               return item.id !== id
@@ -78,8 +78,8 @@
       //   localStorage.setItem("todolist",JSON.stringify(val))
       // }
       listArr:{
-        handler: function (val, oldVal) {
-          localStorage.setItem("todolist",JSON.stringify(val))
+        handler: function (val) {
+          util.set("todolist",val)
         },
         deep: true
       }
