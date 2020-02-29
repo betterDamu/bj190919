@@ -16,7 +16,11 @@
 
 <script>
     export default {
-        name: "Home"
+        name: "Home",
+        //普通的路由被访问时 其对应的组件是不会被复用的 每次该组件的生命周期钩子都会被执行
+        mounted(){
+          console.log("home")
+        }
     }
 </script>
 
