@@ -3,6 +3,7 @@ import Home from "@/pages/Home.vue";
 import User from "@/pages/User.vue";
 import News from "@/pages/News.vue";
 import Message from "@/pages/Message.vue";
+import UserDetail from "@/pages/UserDetail.vue";
 
 
 export default [
@@ -18,16 +19,16 @@ export default [
   {
     path:"/User",
     component:User,
-    props: (route)=>{
-      return {
-        id:route.params.id,
-        name:route.query.name
-      }
-    },// 代表当前占位符id 会以props的方式进行数据传递
     children:[
       {
         path:":id",
-        component:User,
+        component:UserDetail,
+        props: (route)=>{
+          return {
+            id:route.params.id,
+            name:route.query.name
+          }
+        }// 代表当前占位符id 会以props的方式进行数据传递
       }
     ]
   },

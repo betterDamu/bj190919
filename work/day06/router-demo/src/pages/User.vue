@@ -6,15 +6,14 @@
  <!--我们需要将组件和vue-router解耦(解开耦合)-->
 <template>
     <div>
-      第{{id}}号user;
-      用户名为:{{name}}
+      User:
+      <router-view></router-view>
     </div>
 </template>
 
 <script>
     export default {
         name: "User",
-        props:["id","name"],
         mounted(){
           //当多个动态路由匹配到同一个组件时;该组件的生命周期钩子只会被调用一次!!!
           console.log("----")
