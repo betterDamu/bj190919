@@ -10,9 +10,12 @@
         <div class="list-group">
           <!--<a href="/about" class="list-group-item">About</a>-->
           <!--<a href="/home" class="list-group-item">Home</a>-->
-          <router-link to="/About" class="list-group-item">About</router-link>
-          <router-link to="/Home"class="list-group-item">Home</router-link>
-          <router-link to="/User"class="list-group-item">User</router-link>
+          <!--<router-link to="/About" class="list-group-item">About</router-link>-->
+          <!--<router-link to="/Home"class="list-group-item">Home</router-link>-->
+          <!--<router-link to="/User"class="list-group-item">User</router-link>-->
+          <div @click="toAbout" class="list-group-item" :class="{active:aboutActive}">About</div>
+          <div @click="toHome" class="list-group-item" :class="{active:homeActive}">Home</div>
+          <div @click="toUser" class="list-group-item" :class="{active:userActive}">User</div>
         </div>
       </div>
       <div class="col-xs-6">
@@ -31,7 +34,34 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+      aboutActive:true,
+      homeActive:false,
+      userActive:false
+    }
+  },
+  methods:{
+    toAbout(){
+      this.aboutActive = true;
+      this.homeActive = false;
+      this.userActive = false;
+      this.$router.push("/About")
+    },
+    toHome(){
+      this.aboutActive = false;
+      this.homeActive = true;
+      this.userActive = false;
+      this.$router.push("/Home")
+    },
+    toUser(){
+      this.aboutActive = false;
+      this.homeActive = false;
+      this.userActive = true;
+      this.$router.push("/User")
+    }
+  }
 }
 </script>
 
