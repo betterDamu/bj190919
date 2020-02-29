@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            position: relative;
+        }
+
+        #test{
+            width: 100px;
+            height: 100px;
+            background: pink;
+
+            /*
+                使用了绝对定位盒模型的特性:
+
+                   一个绝对定位的元素 它横向上所有盒模型相关的尺寸加起来 + left + right
+                                等于 其包含块的宽度(width + padding(L&R))
+                   一个绝对定位的元素 它纵向上所有盒模型相关的尺寸加起来 + bottom + top
+                                等于 其包含块的高度(height + padding(T&B))
+
+
+                app 就是 test的包含块
+                    width : auto
+                    padding-left & padding-right : 0
+                    border : 0
+                    margin-left & margin-right: auto
+                    left : 0
+                    right: 0
+
+                    =
+
+                    200
+            */
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="test"></div>
+    </div>
+</body>
+</html>

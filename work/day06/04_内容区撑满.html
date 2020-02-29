@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <meta name="viewport" content="width=device-width">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #app{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: pink;
+
+            position: relative;
+        }
+
+        #test{
+            height: 100px;
+            width: 100%;
+            background: gray;
+        }
+
+        #content{
+            width: 100%;
+            background: black;
+
+            position: absolute;
+            top: 100px;
+            bottom: 0;
+
+            /*
+            app 就是 content的包含块
+                height : auto
+                padding-bottom & padding-top : 0
+                border : 0
+                margin-left & margin-right: 0
+                top : 100
+                bottom: 0
+
+                =
+
+                视口的高度
+            */
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="test"></div>
+        <div id="content"></div>
+    </div>
+</body>
+</html>
