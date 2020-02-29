@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+<script>
+    /*querySelectorAll的坑:
+        拿的是一个静态列表  每一次dom有改变的时候 我们在编码时一定要注意同步*/
+
+    window.onload=function () {
+        var listNode = document.querySelector("#list");
+
+        // 拿到的是一个静态列表 : 1 2 3 li
+        var liNodes = listNode.querySelectorAll("li");
+
+
+        //拿的是一个动态列表  会随着dom树的改变 而 改变
+        // var liNodes = listNode.getElementsByTagName("li");
+
+
+        //改变了dom树!!! dom树重新渲染  dom树的整个内存地址都会改变
+        //通过querySelectorAll拿到的li节点 还是前一颗dom树上那三个节点
+        listNode.innerHTML +="<li>4</li><li>5</li>";
+        liNodes = listNode.querySelectorAll("li");
+
+        for(var i=0;i<liNodes.length;i++){
+            liNodes[i].style.background = "pink";
+        }
+    }
+</script>
+</html>

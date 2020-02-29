@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="wrap">
+        <div id="inner">
+                inner
+        </div>
+    </div>
+</body>
+<script>
+
+    // ECMAScript       : ECMA262规范   ECMA:欧洲计算机制造者协会
+    // JSON             : ECMA404规范
+    // HTML CSS DOM     : W3C
+
+
+    /*
+        DOM : (https://www.w3.org/DOM/)
+
+        先有浏览器 后有规范(浏览器大战)
+
+        DOM0 : 在DOM规范之前 各家浏览器厂商实现的比较统一的地方
+    */
+
+    window.onload=function () {
+        //没有阅读规范
+
+
+        //div不能使用getElementById方法
+        //document 代表的是文档节点
+        var wrap = document.getElementById("wrap");
+        //wrap 代表的是元素节点
+        // var inner = wrap.getElementById("inner");
+        // var inner = document.getElementById("inner");
+
+        //DOM0
+        // inner.onclick=function () {
+        //     console.log("inner")
+        // }
+
+        //DOM2
+        // inner.addEventListener("click",()=>{
+        //     console.log("inner")
+        // })
+
+        var inner = document.querySelector("#inner");
+        console.log(inner)
+    }
+</script>
+</html>
