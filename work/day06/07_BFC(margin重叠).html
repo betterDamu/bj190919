@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            margin: 50px;
+        }
+        #inner{
+            width: 100px;
+            height: 100px;
+            background: gray;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--margin层叠只会出现在垂直方向上-->
+
+    <!--解决margin叠加的手段:
+        1. 让他们不属于同一个bfc
+        2. 让他们的margin在垂直方向上不相邻-->
+    <div id="wrap"></div>
+
+
+    <div id="inner"></div>
+
+</body>
+</html>
