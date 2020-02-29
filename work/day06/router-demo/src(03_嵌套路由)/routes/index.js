@@ -15,12 +15,8 @@ export default [
       {path:"Message",component:Message}
     ]
   },
-  {
-    path:"/User",
-    component:User,
-    children:[
-      {path:":id",component:User}
-    ]
-  },
+
+  // 兄弟路由的命名要有规范;不能命名的像一个子路由
+  {path:"/User",component:User},
   { path: '/', redirect: '/About' }
 ]

@@ -2,6 +2,9 @@
     w.myPlugin = Object.create(null);
 
     w.myPlugin.install=function (Vue) {
+
+        Vue.prototype.$route={a:"a"};
+
         Vue.component("v-damu",{
             template:"<div>v-damu</div>"
         })

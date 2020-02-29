@@ -19,8 +19,10 @@
     //将MyPlugin中的install方法取出来进行调用 并将Vue构造函数传到当前方法的第一个参数上
     Vue.use(myPlugin)
 
-    new Vue({
+    var vm = new Vue({
         el:"#app"
     })
+
+    console.log(vm.$route)
 </script>
 </html>
