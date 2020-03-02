@@ -37,9 +37,21 @@ export default {
   name: 'App',
   data(){
     return {
-      aboutActive:true,
+      aboutActive:false,
       homeActive:false,
       userActive:false
+    }
+  },
+  mounted(){
+    // console.log(this.$route)
+    if(this.$route.path==="/About"){
+      this.aboutActive = true
+    }
+    if(this.$route.path==="/Home"){
+      this.homeActive = true
+    }
+    if(this.$route.path==="/User"){
+      this.userActive = true
     }
   },
   methods:{

@@ -17,14 +17,12 @@ export default [
       {
         path:"Message",
         component:Message,
-        children:[
-          {
-            path:":id",
-            component:MessageDetail,
-            props:true
-          }
-        ]
-      }
+        children:[{
+          path:":id", component:MessageDetail,props:true
+        }]
+      },
+      // {path:"Message/:id", component:MessageDetail,props:true},
+      {path:"",redirect:"News"}
     ]
   },
   {
