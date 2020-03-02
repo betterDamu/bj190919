@@ -5,21 +5,23 @@
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      user:{}
+  const axios = require('axios');
+  export default {
+    name: 'HelloWorld',
+    data () {
+      return {
+        user:{}
+      }
+    },
+    async mounted(){
+      //https://developer.github.com/   github的后台restful接口文档
+      //https://api.github.com  github的请求的基地址
+      //const body = await this.$http.get("https://api.github.com/search/users?q=betterDamu");
+
+      const body = await axios.get("https://api.github.com/search/users?q=betterDamu")
+      this.user = body.data.items[0];
     }
-  },
-  async mounted(){
-    //https://developer.github.com/   github的后台restful接口文档
-    //https://api.github.com  github的请求的基地址
-    const body = await this.$http.get("https://api.github.com/search/users?q=betterDamu");
-    this.user = body.data.items[0];
-    console.log(body.data.items[0]);
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
