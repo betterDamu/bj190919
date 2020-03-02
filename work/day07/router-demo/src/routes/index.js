@@ -4,6 +4,7 @@ import User from "@/pages/User.vue";
 import News from "@/pages/News.vue";
 import Message from "@/pages/Message.vue";
 import UserDetail from "@/pages/UserDetail.vue";
+import MessageDetail from "@/pages/MessageDetail.vue";
 
 
 export default [
@@ -13,7 +14,17 @@ export default [
     component:Home,
     children:[
       {path:"News",component:News},
-      {path:"Message",component:Message}
+      {
+        path:"Message",
+        component:Message,
+        children:[
+          {
+            path:":id",
+            component:MessageDetail,
+            props:true
+          }
+        ]
+      }
     ]
   },
   {

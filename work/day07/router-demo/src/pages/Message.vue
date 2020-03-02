@@ -1,10 +1,14 @@
 <template>
     <div>
+      <br>
       <ul>
         <li v-for="item in list">
-          <span>{{item.title}}</span>
+          <!--<span>{{item.title}}</span>-->
+          <router-link :to="`/Home/Message/${item.id}`">{{item.title}}</router-link>
         </li>
       </ul>
+      <br>
+      <router-view></router-view>
     </div>
 </template>
 
