@@ -18,8 +18,25 @@
       //https://api.github.com  github的请求的基地址
       //const body = await this.$http.get("https://api.github.com/search/users?q=betterDamu");
 
-      const body = await axios.get("https://api.github.com/search/users?q=betterDamu")
-      this.user = body.data.items[0];
+      /*const body = await axios.get("https://api.github.com/search/users",{
+        params:{
+          q:"damu"
+        }
+      })
+      this.user = body.data.items[0];*/
+
+
+      //并发请求  使用Promise.all可以同时发两个请求  而且返回的数据是两个请求成功之后的数据组成的数组
+      const damuPromise = axios.get("https://api.github.com/search/users?q=betterDamu");
+      const xfzPromise = axios.get("https://api.github.com/search/users?q=damu");
+      //const body = await Promise.all([damuPromise,xfzPromise]);
+      // console.log(body)
+
+      axios.all([damuPromise,xfzPromise]).then(axios.spread(function (a, b) {
+        // 两个请求现在都执行完成
+        console.log("a",a);
+        console.log("b",b);
+      }))
     }
   }
 </script>
