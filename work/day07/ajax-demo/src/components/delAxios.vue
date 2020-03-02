@@ -1,6 +1,6 @@
 <template>
   <div>
-    测试axios的post方法
+    测试axios的delete方法
   </div>
 </template>
 
@@ -10,7 +10,7 @@
     //在js中函数是一等公民   它也是个对象
     // 1. axios(config)
     // 2. axios(url,config)
-    // 3. axios.post(url,data,config)
+    // 3. axios.delete(url,config)
 
 
     import axios from "axios";
@@ -19,13 +19,9 @@
         async mounted(){
             const body = await axios({
               baseURL: 'https://api.github.com',
-              url:"/repos/betterDamu/bj190919/issues",
-              method:"POST",
-              data: {
-                title: '找bug',
-                body:"出现了一个很难搞懂的bug"
-              },
-              //headers: {'Authorization': 'token 1b03fe29a167eefe7dc7d19531c7e1b2d6689658'},
+              url:"/repos/betterDamu/bj190919/issues/13/lock",
+              method:"delete",
+              headers: {'Authorization': 'token ec9df5018b79b6d3dc7b959b6d303e5fd3063f63'},
             })
             console.log(body)
         }
