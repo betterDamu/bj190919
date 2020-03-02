@@ -43,11 +43,11 @@ export default {
     }
   },
   mounted(){
-    // console.log(this.$route)
+    console.log(this.$route)
     if(this.$route.path==="/About"){
       this.aboutActive = true
     }
-    if(this.$route.path==="/Home"){
+    if(this.$route.path.includes("/Home")){
       this.homeActive = true
     }
     if(this.$route.path==="/User"){

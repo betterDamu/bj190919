@@ -4,9 +4,13 @@
       <ul>
         <li v-for="item in list">
           <!--<span>{{item.title}}</span>-->
-          <router-link :to="`/Home/Message/${item.id}`">{{item.title}}</router-link>
+          <!--<router-link :to="`/Home/Message/${item.id}`">{{item.title}}</router-link>-->
+          <span>{{item.title}}</span>
+          <button @click="pushFn(item.id)">push</button>
+          <button @click="replaceFn(item.id)">replace</button>
         </li>
       </ul>
+      <button @click="backFn">back</button>
       <br>
       <router-view></router-view>
     </div>
@@ -31,6 +35,17 @@
           setTimeout(()=>{
             this.list = list;
           },2000)
+        },
+        methods:{
+          pushFn(id){
+            this.$router.push(`/Home/Message/${id}`)
+          },
+          replaceFn(id){
+            this.$router.replace(`/Home/Message/${id}`)
+          },
+          backFn(){
+            this.$router.go(-1)
+          }
         }
     }
 </script>
