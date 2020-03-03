@@ -26,7 +26,7 @@ vue基础课
 
     4.vuex(有部分技术会在项目二期讲解)
         state
-        getter
-        mutation
-        action
+        mutations
+        getters
+        actions
 

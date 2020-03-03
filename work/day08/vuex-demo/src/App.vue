@@ -1,8 +1,18 @@
 <template>
   <div id="app">
-      <span style="font-size: 30px" @click="handleC">
-        {{count}}
+      <span>
+        {{firstName}} - {{lastName}}
       </span>
+      <br>
+      <span>
+        {{fullName}}
+      </span>
+      <br>
+      <span style="font-size: 30px" @click="handleC">
+        当前{{count}}是 <strong style="color:red;">{{flag}}</strong> 数
+      </span>
+      <br>
+      <button @click="asyncAdd">async add</button>
   </div>
 </template>
 
@@ -23,14 +33,42 @@ export default {
   computed:{
     count(){
       return this.$store.state.count
+    },
+    firstName(){
+      return this.$store.state.firstName
+    },
+    lastName(){
+      return this.$store.state.lastName
+    },
+    fullName(){
+      return this.$store.getters.fullName
+    },
+    flag(){
+      return this.$store.getters.flag
     }
   },
   methods:{
+    asyncAdd(){
+      //异步的修改仓库中的数据
+      // this.$store.commit("asyncInc")
+      this.$store.dispatch("asyncInc",{
+        test:"a",
+        test2:"b"
+      })
+    },
     handleC(){
       //直接修改仓库的数据  不规范的写法
       //this.$store.state.count++
       //应该使用vuex仓库中的工具来修改仓库的数据
-      this.$store.commit("inc")
+      /*
+        载荷就是在提交mutation时;组件可以带给仓库的数据
+          如果数据只有一个 那不要求写成对象
+          如果数据有多份 那就应该要写成对象
+      */
+      this.$store.commit("inc",{
+        test:"test",
+        test2:"test2"
+      })
     }
   }
 }
