@@ -1,14 +1,15 @@
 <template>
   <div class="card">
-    <a href="https://github.com/reactjs" target="_blank">
-      <img src="https://avatars.githubusercontent.com/u/6412038?v=3" style='width: 100px'/>
+    <a :href="item.href" target="_blank">
+      <img :src="item.src" style='width: 100px'/>
     </a>
-    <p class="card-text">reactjs</p>
+    <p class="card-text">{{item.name}}</p>
   </div>
 </template>
 
 <script>
     export default {
+        props:["item"],
         name: "item"
     }
 </script>
