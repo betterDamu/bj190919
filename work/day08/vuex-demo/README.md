@@ -1,21 +1,10 @@
-# vuex-demo
+###1. 使用脚手架生成项目
+  vue init webpack projectName
 
-> A Vue.js project
+###2. 拆分静态组件
 
-## Build Setup
+###3. 设计路由
 
-``` bash
-# install dependencies
-npm install
+###4. 设计数据(数据结构应该是什么样 考虑请求在哪发送)
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+###5. 搭建vuex仓库(数据结构应该是什么样 考虑请求在哪发送)

@@ -29,4 +29,6 @@ vue基础课
         mutations
         getters
         actions
+        优化组件的写法
+        优化仓库的写法(当仓库特别大的时候 我们需要给仓库分模块)
 

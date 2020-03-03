@@ -1,48 +1,13 @@
 <template>
   <div id="app">
-      <span>
-        {{firstName}} - {{lastName}}
-      </span>
-      <br>
-      <span>
-        {{fullName}}
-      </span>
-      <br>
-      <span style="font-size: 30px" @click="handleC">
-        当前{{count}}是 <strong style="color:red;">{{flag}}</strong> 数
-      </span>
-      <br>
-      <button @click="asyncAdd">async add</button>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
-  // vuex中的state 我们在组件中使用时通常需要有对应的computed
-  // vuex中的getters 我们在组件中使用时通常需要有对应的computed
-  // vuex中的mutations 我们在组件中使用时通常需要有对应的methods
-  // vuex中的actions 我们在组件中使用时通常需要有对应的methods
-import {mapState,mapGetters} from "vuex";
-export default {
-  name: 'App',
-  computed:{
-    ...mapState(["count","firstName","lastName"]),
-    ...mapGetters(["fullName","flag"])
-  },
-  methods:{
-    asyncAdd(){
-      this.$store.dispatch("asyncInc",{
-        test:"a",
-        test2:"b"
-      })
-    },
-    handleC(){
-      this.$store.commit("inc",{
-        test:"test",
-        test2:"test2"
-      })
-    }
+  export default {
+    name:"app"
   }
-}
 </script>
 
 <style>
