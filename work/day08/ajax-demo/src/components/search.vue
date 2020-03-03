@@ -18,7 +18,9 @@
         },
         methods:{
           searchFn(){
-            this.$bus.$emit("search",this.searchName)
+            this.$bus.$emit("search",this.searchName);
+            //将文本框清空
+            this.searchName="";
           }
         }
     }
