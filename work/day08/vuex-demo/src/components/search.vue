@@ -4,12 +4,13 @@
     <div>
       <input type="text" placeholder="enter the name you search"
              v-model.lazy.trim="searchName"/>
-      <button>Search</button>
+      <button @click="getList">Search</button>
     </div>
   </section>
 </template>
 
 <script>
+    import {mapActions} from "vuex";
     export default {
         name: "search",
         computed:{
@@ -26,6 +27,9 @@
               this.$store.dispatch("searchName",val)
             }
           }
+        },
+        methods:{
+          ...mapActions(["getList"])
         }
     }
 </script>
