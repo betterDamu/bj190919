@@ -8,11 +8,17 @@ Vue.use(Vuex);
 
 //当前配置对象中所有属性都会转绑给store仓库
 const store = new Vuex.Store({
+  strict: true,
   //数据
   state: {
-    count: 100
-  }
+    count: 0
+  },
   //操作数据的工具
+  mutations:{
+    inc(state){
+      state.count++
+    }
+  }
 })
 
 export default store;
