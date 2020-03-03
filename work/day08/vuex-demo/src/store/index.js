@@ -38,6 +38,7 @@ const store = new Vuex.Store({
   actions:{
     //action中一般写异步逻辑;在action中我们会提交mutation来同步的去修改数据state
     asyncInc({commit},{test,test2}){
+      //定时器是异步的 ;访问服务器获取数据 异步的!!!
       setTimeout(()=>{
         commit("inc",{test,test2})
       },2000)
